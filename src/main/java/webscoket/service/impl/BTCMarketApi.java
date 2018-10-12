@@ -21,7 +21,7 @@ public class BTCMarketApi  implements IBTCMarketApi {
     @Override
     public String getBTCMarket() {
 
-        HttpRequest get = HttpUtil.createGet("https://otc-api.eiijo.cn/v1/data/trade-market?country=37&currency=1&payMethod=0&currPage=1&coinId=2&tradeType=sell&blockType=general&online=1");
+        HttpRequest get = HttpUtil.createGet("https://otc-api.hbg.com/v1/data/trade-market?country=37&currency=1&payMethod=0&currPage=1&coinId=2&tradeType=sell&blockType=general&online=1");
         HttpRequest token = get.header("token", this.token);
         HttpResponse response = token.execute();
         String body = response.body();

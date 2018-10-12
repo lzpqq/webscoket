@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import webscoket.domain.ResponseBo;
 import webscoket.service.IBTCMarketApi;
@@ -20,7 +21,7 @@ public class BTCMarketController {
     @Autowired
     private IBTCMarketApi ibtcMarketApi;
 
-    @RequestMapping("/listMarket")
+    @RequestMapping(value = "/listMarket",method = RequestMethod.GET)
     public ResponseBo listMarket(){
         String btcMarket = ibtcMarketApi.getBTCMarket();
 
