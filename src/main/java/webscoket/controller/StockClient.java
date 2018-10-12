@@ -27,6 +27,11 @@ public class StockClient {
         return "/index";
     }
 
+    @RequestMapping(value = "/list")
+    public String list (){
+        return "/list";
+    }
+
     @ResponseBody
     @RequestMapping(value = "/kline",method = RequestMethod.POST)
     public ResponseBo kline(@RequestParam("symbol") String symbol,@RequestParam("type") String type){
