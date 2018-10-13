@@ -37,7 +37,7 @@ layui.use(['layer', 'table' , 'form' ], function () {
         onBar : function(){
 
         	$('.buy').unbind('click').click(function(){
-        		console.log(this.id);
+        		var id = this.id;
                 var html = '';
                 html += '<div>金&nbsp;&nbsp;&nbsp;额:<input type="text" id="money" placeholder="请输入金额" /><br/>';
                 html += '用户名:<input type="text" id="name" placeholder="请输入用户名" /></div>';
@@ -50,13 +50,20 @@ layui.use(['layer', 'table' , 'form' ], function () {
                     content: html,
                     btn : ['yes','no'],
                     yes : function(){
-                        //$('#money').val()
+                        var money = $('#money').val();
+                        var name = $('#name').val();
+                        console.log(money);
+                        console.log(id);
 						$.ajax({
-							url : '',
-							type : '',
-							data : {},
+							url : '/order',
+							type : 'POST',
+							data : {tradeId : id,amount : money},
 							success : function (rep) {
+								console.log(rep.msg);
+                                var data = rep.data;
 
+                                //跳页面，参数:data,name
+                                location.href="/orderPage?name=" + name + "&data=" + data;
                             },
 							error : function (rep) {
 								console.log(rep);

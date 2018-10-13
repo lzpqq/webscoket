@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import webscoket.domain.ResponseBo;
 import webscoket.service.IStockRestApi;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -30,6 +32,22 @@ public class StockClient {
     @RequestMapping(value = "/list")
     public String list (){
         return "/list";
+    }
+
+    @RequestMapping(value = "/orderPage")
+    public ModelAndView order(HttpServletRequest request){
+        String data = request.getParameter("data");
+        String name = request.getParameter("name");
+        System.out.println("------------------------------");
+        System.out.println(data);
+        System.out.println(name);
+        System.out.println("------------------------------");
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("name",name);
+        mv.addObject("data",data);
+        mv.setViewName("/order");
+
+        return mv;
     }
 
     @ResponseBody
