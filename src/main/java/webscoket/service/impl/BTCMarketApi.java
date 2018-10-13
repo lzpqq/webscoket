@@ -31,7 +31,8 @@ public class BTCMarketApi  implements IBTCMarketApi {
     @Override
     public String getBTCMarket() {
 
-        HttpRequest get = HttpUtil.createGet("https://otc-api.hbg.com/v1/data/trade-market?country=37&currency=1&payMethod=0&currPage=1&coinId=2&tradeType=sell&blockType=general&online=1");
+//        HttpRequest get = HttpUtil.createGet("https://otc-api.hbg.com/v1/data/trade-market?country=37&currency=1&payMethod=0&currPage=1&coinId=2&tradeType=sell&blockType=general&online=1");
+        HttpRequest get = HttpUtil.createGet("https://otc-api.eiijo.cn/v1/data/trade-market?country=37&currency=1&payMethod=0&currPage=1&coinId=2&tradeType=sell&blockType=general&online=1");
         HttpRequest token = get.header("token", this.token);
         HttpResponse response = token.execute();
         String body = response.body();
@@ -52,7 +53,7 @@ public class BTCMarketApi  implements IBTCMarketApi {
         JSONObject data = jsonObject.getJSONObject("data");
         String ticket = (String) data.get("ticket");
 
-        HttpRequest post = HttpUtil.createPost("https://otc-api.hbg.com/v1/otc/order");
+        HttpRequest post = HttpUtil.createPost("https://otc-api.eiijo.cn/v1/otc/order");
         HttpRequest token = post.header("token", this.token);
         HashMap<String, Object> map = new HashMap<>();
         map.put("amount",amount);
@@ -67,7 +68,7 @@ public class BTCMarketApi  implements IBTCMarketApi {
 
     @Override
     public String orderInfo(String number) {
-        HttpRequest get = HttpUtil.createGet("https://otc-api.hbg.com/v1/otc/order/"+number);
+        HttpRequest get = HttpUtil.createGet("https://otc-api.eiijo.cn/v1/otc/order/"+number);
         HttpRequest token = get.header("token", this.token);
         HttpResponse response = token.execute();
         String body = response.body();

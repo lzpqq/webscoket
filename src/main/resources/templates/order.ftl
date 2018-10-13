@@ -9,7 +9,15 @@
     <script type="text/javascript" src="layui/layui.js"></script>
 </head>
 <body data-type="order">
-<div id="table"></div>
+<input type="hidden" id="name" value="${RequestParameters.name}" />
+<input type="hidden" id="data" value="${RequestParameters.data}" />
+<div style="float: left">
+    <span style="font-size: 20px" id="orderInfo">支付方式：<br/></span>
+    <div>
+        <input type="button" id="ok" value="确认已付款"/>
+    </div>
+</div>
+<div id="zfType" style="padding-left: 300px;float: left"></div>
 
 <script type="text/javascript" src="js/order.js"></script>
 </body>
